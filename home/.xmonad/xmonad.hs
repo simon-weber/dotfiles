@@ -24,7 +24,7 @@ myTerminal = "gnome-terminal"
 
 myDmenu = "exe=`dmenu_run " ++ dmenuOptions ++ "` && eval \"exec $exe\""
 
-myWorkspaces = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι" ]
+myWorkspaces = ["α", "β", "γ", "δ", "ε"]
 
 myKeys = [
      ((mod4Mask, xK_r), spawn myDmenu)
@@ -40,7 +40,8 @@ myManageHook = composeAll $
     ]
 
 main = do
-    -- mapM spawnPipe [ "xscreensaver -no-splash"] 
+    mapM spawnPipe [ "xscreensaver -no-splash" 
+                    , "tint2 -c ~/.tint2rc"
     --                , "xbindkeys"
     --                , "parcellite"
     --                , "/home/simon/.dropbox-dist/dropboxd"
@@ -49,7 +50,7 @@ main = do
     --                , "volumeicon"
     --                , "gnome-do"
     --                , "feh --bg-center /home/simon/images/wallpapers/darkwood.jpg"
-    --                ]
+                    ]
 
     xmonad $ ewmh desktopConfig
         { manageHook = manageDocks <+> myManageHook
