@@ -13,26 +13,18 @@ import XMonad.Util.EZConfig
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageHelpers
 
-dmenuOptions = "-b" 
-              -- ++ " -fn " ++ myFont
-              -- ++ " -nf " ++ myNormalFGColor 
-              -- ++ " -nb " ++ myNormalBGColor 
-              -- ++ " -sf " ++ myFocusedFGColor
-              -- ++ " -sb " ++ myFocusedBGColor 
-
 myTerminal = "gnome-terminal"
 
-myDmenu = "exe=`dmenu_run " ++ dmenuOptions ++ "` && eval \"exec $exe\""
+myDmenu = "exe=`dmenu_run -b` && eval \"exec $exe\""
 
 myWorkspaces = ["α", "β", "γ", "δ", "ε"]
 
-myKeys = [
-     ((mod4Mask, xK_r), spawn myDmenu)
-     --, ((mod4Mask, xK_l), spawn "xscreensaver-command -lock")
-    ] ++
-    [((m .|. mod1Mask, k), windows $ f i) --make M-# view, not swap
-         | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
-         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+myKeys = [  ((mod4Mask, xK_r), spawn myDmenu)
+          , ((mod4Mask, xK_l), spawn "xscreensaver-command -lock")
+         ] ++
+         [((m .|. mod1Mask, k), windows $ f i) --make M-# view, not swap
+              | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
+              , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
 myManageHook = composeAll $
