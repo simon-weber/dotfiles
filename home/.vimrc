@@ -13,7 +13,7 @@ let g:jedi#popup_on_dot = 0
 let g:syntastic_python_checkers=['flake8', 'python']
 let g:jedi#show_function_definition = "0"
 
-set rtp+=$GOROOT/misc/vim
+"" set rtp+=$GOROOT/misc/vim    " when using GO
 
 filetype plugin indent on       " for vundle
 
