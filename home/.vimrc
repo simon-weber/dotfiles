@@ -21,6 +21,7 @@ filetype plugin indent on       " for vundle
 syntax enable
 set encoding=utf-8
 set showcmd                     " display incomplete commands
+set undofile
 
 "" Whitespace
 set nowrap                      
