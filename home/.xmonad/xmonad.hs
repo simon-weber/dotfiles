@@ -2,6 +2,7 @@ import XMonad
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
+import System.Exit ( exitWith, ExitCode(ExitSuccess) )
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -13,21 +14,16 @@ import XMonad.Util.EZConfig
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageHelpers
 
-myTerminal = "terminator"
-myFilemanager = "thunar"
-myLock = "cb-lock"
-myLogout = "cb-exit"  -- more general: call `io (exitWith ExitSuccess)`
-myScreenshot = "xfce4-screenshooter"
+myTerminal = "xterm"
+myLock = "xscreensaver-command -lock"
 myDmenu = "exe=`dmenu_run -b` && eval \"exec $exe\""
 
 myWorkspaces = ["α", "β", "γ", "δ", "ε"]
 
 myKeys = [  ((mod4Mask, xK_r), spawn myDmenu)
-          , ((mod4Mask, xK_f), spawn myFilemanager)
           , ((mod4Mask, xK_w), spawn "x-www-browser")
           , ((mod4Mask, xK_l), spawn myLock)
-          , ((mod4Mask, xK_Print), spawn myScreenshot)
-          , ((mod4Mask, xK_x), spawn myLogout)
+          , ((mod4Mask, xK_x), io (exitWith ExitSuccess))
          ] ++
          [((m .|. mod1Mask, k), windows $ f i) --make M-# view, not swap
               | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
