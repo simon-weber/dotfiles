@@ -1,7 +1,6 @@
 #!/bin/sh
 
 /usr/bin/tint2 -c ~/.tint2rc &
-xbindkeys &
 feh --bg-center ~/images/wallpapers/darkwood.jpg &
 nm-applet &
 xfce4-power-manager &

@@ -13,14 +13,21 @@ import XMonad.Util.EZConfig
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageHelpers
 
-myTerminal = "gnome-terminal"
-
+myTerminal = "terminator"
+myFilemanager = "thunar"
+myLock = "cb-lock"
+myLogout = "cb-exit"  -- more general: call `io (exitWith ExitSuccess)`
+myScreenshot = "xfce4-screenshooter"
 myDmenu = "exe=`dmenu_run -b` && eval \"exec $exe\""
 
 myWorkspaces = ["α", "β", "γ", "δ", "ε"]
 
 myKeys = [  ((mod4Mask, xK_r), spawn myDmenu)
-          , ((mod4Mask, xK_l), spawn "xscreensaver-command -lock")
+          , ((mod4Mask, xK_f), spawn myFilemanager)
+          , ((mod4Mask, xK_w), spawn "x-www-browser")
+          , ((mod4Mask, xK_l), spawn myLock)
+          , ((mod4Mask, xK_Print), spawn myScreenshot)
+          , ((mod4Mask, xK_x), spawn myLogout)
          ] ++
          [((m .|. mod1Mask, k), windows $ f i) --make M-# view, not swap
               | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
@@ -32,18 +39,6 @@ myManageHook = composeAll $
     ]
 
 main = do
-    mapM spawnPipe [ "xscreensaver -no-splash" 
-                    , "tint2 -c ~/.tint2rc"
-    --                , "xbindkeys"
-    --                , "parcellite"
-    --                , "/home/simon/.dropbox-dist/dropboxd"
-    --                , "nm-applet"
-    --                , "xfce4-power-manager"
-    --                , "volumeicon"
-    --                , "gnome-do"
-    --                , "feh --bg-center /home/simon/images/wallpapers/darkwood.jpg"
-                    ]
-
     xmonad $ ewmh desktopConfig
         { manageHook = manageDocks <+> myManageHook
                         <+> manageHook desktopConfig
