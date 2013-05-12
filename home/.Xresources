@@ -1,3 +1,14 @@
+
+xterm*VT100.translations: #override \
+    <Btn1Down>: select-start()\n\
+    <Btn1Motion>: select-extend()\n\
+    <Btn1Up>: select-end(CLIPBOARD)\n\
+    Ctrl Shift <Key>v: insert-selection(CLIPBOARD)
+
+XTerm*faceName:     Terminus
+XTerm*faceSize:     10
+
+!! solarized copy+paste:
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 !!--------- ------- ---- -------  ----------- ---------- ----------- -----------
 !!base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
@@ -73,9 +84,3 @@
 !! white dark/light
 *color7:                S_base2
 *color15:               S_base3
-
-xterm*VT100.translations: #override \
-    <Btn1Down>: select-start()\n\
-    <Btn1Motion>: select-extend()\n\
-    <Btn1Up>: select-end(CLIPBOARD)\n\
-    Ctrl Shift <Key>v: insert-selection(CLIPBOARD)
