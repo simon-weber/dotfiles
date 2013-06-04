@@ -1,3 +1,4 @@
+xterm*utf8: 1
 
 xterm*VT100.translations: #override \
     <Btn1Down>: select-start()\n\
@@ -5,10 +6,11 @@ xterm*VT100.translations: #override \
     <Btn1Up>: select-end(CLIPBOARD)\n\
     Ctrl Shift <Key>v: insert-selection(CLIPBOARD)
 
+!! apparently terminus won't show many utf8 glyphs?
 XTerm*faceName:     Terminus
 XTerm*faceSize:     10
 
-!! solarized copy+paste:
+!! solarized copy+paste below here:
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 !!--------- ------- ---- -------  ----------- ---------- ----------- -----------
 !!base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
