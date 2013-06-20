@@ -1,2 +1,3 @@
 source ~/.git-completion.bash
 PATH=$PATH:~/bin
+PATH=$PATH:/usr/local/go/bin
