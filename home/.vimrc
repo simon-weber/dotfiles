@@ -11,6 +11,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'JavaScript-Indent'
 Bundle 'hynek/vim-python-pep8-indent.git'
+Bundle 'tpope/vim-markdown'
 
 let g:jedi#popup_on_dot = 0
 let g:syntastic_python_checkers=['flake8', 'python']
