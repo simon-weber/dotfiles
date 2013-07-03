@@ -8,3 +8,5 @@
     diff = auto
 [core]
 	autocrlf = input
+[alias]
+	lg = log --oneline --decorate --all --graph -30
