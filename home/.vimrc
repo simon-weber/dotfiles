@@ -1,5 +1,6 @@
 set nocompatible                " choose no compatibility with legacy vi
 filetype off
+filetype plugin indent off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -9,18 +10,18 @@ Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'JavaScript-Indent'
+Bundle 'hynek/vim-python-pep8-indent.git'
 Bundle 'tpope/vim-markdown'
-Bundle 'indentpython.vim--nianyang'
 
 let g:jedi#popup_on_dot = 0
 let g:syntastic_python_checkers=['flake8', 'python']
 let g:jedi#show_function_definition = "0"
 
-"" set rtp+=$GOROOT/misc/vim    " when using GO
+"" set rtp+=/usr/local/go/misc/vim       " when using GO
 
-filetype plugin indent on       " for vundle
-
+filetype plugin indent on
 syntax enable
+
 set encoding=utf-8
 set showcmd                     " display incomplete commands
 set undofile
