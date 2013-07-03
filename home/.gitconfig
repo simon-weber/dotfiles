@@ -1,0 +1,12 @@
+[user]
+	name = Simon Weber
+	email = simon@simonmweber.com
+[color]
+    ui = auto
+    branch = auto
+    status = auto
+    diff = auto
+[core]
+	autocrlf = input
+[alias]
+	lg = log --oneline --decorate --all --graph -30
