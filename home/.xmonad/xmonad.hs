@@ -14,7 +14,7 @@ import XMonad.Util.EZConfig
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageHelpers
 
-myTerminal = "xterm"
+myTerminal = "terminator"
 myLock = "xscreensaver-command -lock"
 myDmenu = "exe=`dmenu_run -b` && eval \"exec $exe\""
 
@@ -23,7 +23,7 @@ myWorkspaces = ["α", "β", "γ", "δ", "ε"]
 myKeys = [  ((mod4Mask, xK_r), spawn myDmenu)
           , ((mod4Mask, xK_w), spawn "x-www-browser")
           , ((mod4Mask, xK_l), spawn myLock)
-          , ((mod4Mask, xK_x), io (exitWith ExitSuccess))
+          , ((mod4Mask, xK_x), spawn "cb-exit")
          ] ++
          [((m .|. mod1Mask, k), windows $ f i) --make M-# view, not swap
               | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
