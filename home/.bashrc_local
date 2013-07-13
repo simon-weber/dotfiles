@@ -1,1 +1,2 @@
 source ~/.git-completion.bash
+export PATH="$PATH:~/lib/adt-bundle-linux-x86_64-20130522/sdk/tools"
