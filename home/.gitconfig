@@ -1,12 +1,21 @@
 [user]
 	name = Simon Weber
 	email = simon@simonmweber.com
+[core]
+	editor = vim
+	autocrlf = input
+	excludesfile = ~/.gitignore
 [color]
     ui = auto
     branch = auto
     status = auto
     diff = auto
-[core]
-	autocrlf = input
 [alias]
 	lg = log --oneline --decorate --all --graph -30
+    rb = for-each-ref --format='%(refname:short)' --sort=-authordate --count=8 refs/heads/
+    co = checkout
+[push]
+	default = simple
+[rerere]
+	enabled = 1
+	autoupdate = true

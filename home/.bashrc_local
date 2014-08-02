@@ -1,1 +1,57 @@
-source ~/.git-completion.bash
+export VENMO_DEV_VM_MEMORY=4096
+export VAGRANT_VAGRANTFILE=Vagrantfile-precise
+export VGIT_USERNAME=simon-weber
+
+PS1_DEFAULT="$PS1"
+PS1_PERSONAL="$PS1(*p*) "
+
+change_context() {
+    if [ "$PWD" != "$PREV_CWD" ]; then
+        PREV_CWD="$PWD";
+        PREV_CONTEXT="$CURRENT_CONTEXT"
+
+        if [[ "$PWD" =~ /Users/simonweber/other.* ]];
+        then
+            CURRENT_CONTEXT=personal
+        else
+            CURRENT_CONTEXT=work
+        fi
+
+        if [[ "$CURRENT_CONTEXT" != "$PREV_CONTEXT" ]];
+        then
+            echo "changing context to: $CURRENT_CONTEXT"
+            len=${#_append_for_personal}
+
+            case $CURRENT_CONTEXT in
+                work)
+                    go_work
+                    ;;
+                personal)
+                    go_personal
+                    ;;
+            esac
+        fi
+    fi
+}
+
+go_work() {
+    export PS1="$PS1_DEFAULT"
+    git config --global user.email "simon.weber@venmo.com"
+}
+
+go_personal() {
+    export PS1="$PS1_PERSONAL"
+    git config --global user.email "simon@simonmweber.com"
+}
+
+# homebrew path setup
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+
+# use brew gnuutils with man.
+# source: https://gist.github.com/quickshiftin/9130153
+alias man='_() { echo $1; man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1 1>/dev/null 2>&1;  if [ "$?" -eq 0 ]; then man -M $(brew --prefix)/opt/coreutils/libexec/gnuman $1; else man $1; fi }; _'
+
+CURRENT_CONTEXT=work
+export PROMPT_COMMAND=change_context
+
+export SHABU_REPO=~/shabu
