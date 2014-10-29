@@ -31,6 +31,7 @@ Bundle 'hynek/vim-python-pep8-indent.git'
 Bundle 'tpope/vim-markdown'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
+Bundle 'fatih/vim-go'
 
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
@@ -48,6 +49,7 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#use_splits_not_buffers = "right"
+let g:jedi#show_call_signatures = 0
 
 if bufname("%") =~? '\.spt$'
     let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
@@ -96,6 +98,22 @@ execute "nnoremap <leader>f :silent lgrep! \"(\\b)<C-R><C-W>(\\b)\" " . relgitdi
 " bind \ (backward slash) to grep shortcut
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 execute "nnoremap \\ :Ag  " . relgitdir . "<C-Left><left>"
+
+" also close location list when quitting buffer
+cabbrev q lcl\|q
+" shortcut for closing location list
+cabbrev ql lcl
+
+function! MagicQuit()
+    if &buftype == 'quickfix'
+        " assumes quickfix isn't being used
+        execute 'lclose'
+    else
+        execute 'quit'
+    endif
+endfunction
+
+cabbrev q :call MagicQuit()
 
 set hidden                      " allow leaving buffer with outstanding changes
 
