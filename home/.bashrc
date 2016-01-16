@@ -18,6 +18,9 @@ shopt -s histappend
 HISTSIZE=50000
 HISTFILESIZE=50000
 
+# prepend a space to commands to omit them from history
+export HISTIGNORE=' *'
+
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -68,31 +71,9 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+alias ls='ls --color=auto'
+timetrap_switch() { t out; t in "$@"; }
+alias ts=timetrap_switch
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -104,6 +85,11 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export CLICOLOR=1
+
+export EDITOR=vim
+
+export GOPATH=$HOME/other/go
+export PATH=$PATH:$GOPATH/bin
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$HOME/Library/Haskell/bin:$PATH
@@ -117,3 +103,12 @@ if [ -f ~/.bashrc_local ]
 then
     source ~/.bashrc_local
 fi
+
+# a place to put things to not check into dotfiles repo
+if [ -f ~/.bashrc_secret ]
+then
+    source ~/.bashrc_secret
+fi
+
+# added by travis gem
+[ -f /Users/simonweber/.travis/travis.sh ] && source /Users/simonweber/.travis/travis.sh
