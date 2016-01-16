@@ -72,8 +72,6 @@ xterm*|rxvt*)
 esac
 
 alias ls='ls --color=auto'
-timetrap_switch() { t out; t in "$@"; }
-alias ts=timetrap_switch
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -87,14 +85,6 @@ export LANG=en_US.UTF-8
 export CLICOLOR=1
 
 export EDITOR=vim
-
-export GOPATH=$HOME/other/go
-export PATH=$PATH:$GOPATH/bin
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$HOME/Library/Haskell/bin:$PATH
-PATH=/usr/local/bin:$PATH
-PATH=$HOME/bin:$PATH
 
 source ~/.git-completion.bash
 
@@ -110,5 +100,4 @@ then
     source ~/.bashrc_secret
 fi
 
-# added by travis gem
-[ -f /Users/simonweber/.travis/travis.sh ] && source /Users/simonweber/.travis/travis.sh
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
