@@ -1,0 +1,4 @@
+*.swp
+*~
+venv-*
+git-hooks/post-commit
