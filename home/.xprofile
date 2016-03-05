@@ -1,0 +1,7 @@
+# Disable touch-to-click latency.
+synclient ClickTime=0
+synclient SingleTapTimeout=0
+
+( sleep 1s clipit --daemon ) &
+# gnome seems to override xmodmap if it runs to quickly.
+( sleep 2s && xmodmap ~/.xmodmap ) &

@@ -34,10 +34,6 @@ Bundle 'fisadev/vim-isort'
 Bundle 'rodjek/vim-puppet'
 Plugin 'pangloss/vim-javascript'
 
-Bundle 'kien/ctrlp.vim'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-
 Bundle 'python_match.vim'
 "" % becomes python-aware
 "" [% and ]% go to start/end of current block
@@ -53,9 +49,10 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#use_splits_not_buffers = "right"
 let g:jedi#show_call_signatures = 0
 
-if bufname("%") =~? '\.spt$'
-    let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
-endif
+Bundle 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode = 'ra'
 
 if executable('ag')
     " The Silver Searcher
@@ -152,12 +149,12 @@ filetype indent on
 set cinoptions=:0,(0,u0,W1s
 autocmd FileType * setlocal indentkeys+=!<Tab>
 
+
+
 "" Smooth scrolling (http://stackoverflow.com/questions/4064651)
 noremap <expr> <C-u> repeat("\<C-y>", 20)
 noremap <expr> <C-d> repeat("\<C-e>", 20)
 set so=7
-
-au BufRead *.spt set ft=python
 
 "" Spell checking
 "" autocmd BufRead,BufNewFile *.md setlocal spell
