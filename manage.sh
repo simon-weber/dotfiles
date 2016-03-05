@@ -8,7 +8,8 @@ USAGE="$APPNAME <command>
 command is one of:
     copy       diff/copy with confirmation
     forcecopy  copy without confirmation
-    rmold      remove old files with confirmation"
+    rmold      remove old files with confirmation
+    copyin    copy contents of checked in files from ~ to this repo"
 
 # diff (current, new) files, asking to copy on difference
 function diffcopy(){
@@ -37,6 +38,14 @@ function forcecopy(){
     popd
 }
 
+# copy in current files without diffing/confirming
+function copyin(){
+    for gitfn in $(cd home/; git ls-tree --name-only -r HEAD .)
+    do
+        cp "$HOME/$gitfn" home/"$gitfn"
+    done
+}
+
 # ask a user for confirmation
 # return 0 if user types y
 # $1: confirmation message
@@ -59,6 +68,8 @@ case "$1" in
         forcecopy;;
     rmold)
         rmold;;
+    copyin)
+        copyin;;
     *)
         echo "$USAGE";;
 esac
