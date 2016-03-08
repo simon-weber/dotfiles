@@ -1,3 +1,5 @@
+sudo apt-get install -y silversearcher-ag vim-gtk xfonts-terminus clipit powertop jq
+
 echo '=== Installing vundle'
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 echo
@@ -6,4 +8,5 @@ echo '=== Installing bundles'
 vim +BundleInstall +qall
 echo
 
-sudo apt-get install -y silversearcher-ag vim-gtk xfonts-terminus clipit fluxgui powertop jq
+curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+pyenv update
