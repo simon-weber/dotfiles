@@ -9,7 +9,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Config.Desktop
+import XMonad.Config.Xfce
 import XMonad.Util.EZConfig
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageHelpers
@@ -35,9 +35,9 @@ myManageHook = composeAll $
     ]
 
 main = do
-    xmonad $ ewmh desktopConfig
+    xmonad $ ewmh xfceConfig
         { manageHook = manageDocks <+> myManageHook
-                        <+> manageHook desktopConfig
+                        <+> manageHook xfceConfig
         , terminal = myTerminal
         , layoutHook = avoidStruts  $  smartBorders $ layoutHook defaultConfig
         , borderWidth = 3
