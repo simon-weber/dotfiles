@@ -1,6 +1,6 @@
 [user]
 	name = Simon Weber
-	email = simon@venmo.com
+	email = simon@simonmweber.com
 [core]
 	editor = vim
 	autocrlf = input
@@ -19,5 +19,3 @@
 [rerere]
 	enabled = 1
 	autoupdate = true
-[hub]
-    host = github.braintreeps.com

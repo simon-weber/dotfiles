@@ -52,6 +52,7 @@ let g:jedi#completions_enabled = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#use_splits_not_buffers = "right"
 let g:jedi#show_call_signatures = 0
+let g:jedi#smart_auto_mappings = 0
 
 if bufname("%") =~? '\.spt$'
     let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }

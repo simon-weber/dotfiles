@@ -2,3 +2,4 @@
 *~
 venv-*
 git-hooks/post-commit
+*.pem
