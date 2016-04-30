@@ -23,7 +23,6 @@ myWorkspaces = ["α", "β", "γ", "δ", "ε"]
 myKeys = [  ((mod4Mask, xK_r), spawn myDmenu)
           , ((mod4Mask, xK_w), spawn "x-www-browser")
           , ((mod4Mask, xK_l), spawn myLock)
-          , ((mod4Mask, xK_x), spawn "cb-exit")
          ] ++
          [((m .|. mod1Mask, k), windows $ f i) --make M-# view, not swap
               | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
@@ -32,6 +31,8 @@ myKeys = [  ((mod4Mask, xK_r), spawn myDmenu)
 
 myManageHook = composeAll $
     [ isFullscreen --> (doF W.focusDown <+> doFullFloat)
+    , title =? "xfce4-notifyd" --> doIgnore
+    , title =? "xfce4-panel" --> doIgnore
     ]
 
 main = do

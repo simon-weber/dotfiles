@@ -48,6 +48,7 @@ let g:jedi#completions_enabled = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#use_splits_not_buffers = "right"
 let g:jedi#show_call_signatures = 0
+let g:jedi#smart_auto_mappings = 0
 
 Bundle 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
@@ -139,7 +140,7 @@ au FileType python setlocal formatprg=autopep8\ -
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 "" auto-remove trailing whitespace
-"" autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.py :%s/\s\+$//e
 
 "" Emacs-style autoindent
 set cinkeys=0{,0},0),0#,!<Tab>,;,:,o,O,e

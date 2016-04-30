@@ -19,5 +19,3 @@
 [rerere]
 	enabled = 1
 	autoupdate = true
-[hub]
-    host = github.braintreeps.com
