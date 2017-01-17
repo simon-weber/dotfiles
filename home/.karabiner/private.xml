@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+    <item>
+        <name>Remap F19 to Shift + Control + Option</name>
+        <appendix></appendix>
+        
+        <identifier>caps_lock_to_sco</identifier>
+        
+        <autogen>
+            --KeyToKey--
+            KeyCode::F19,
+            
+            KeyCode::CONTROL_L,
+            ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L
+        </autogen>
+    </item>
+</root>
