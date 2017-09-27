@@ -52,7 +52,7 @@ let g:jedi#smart_auto_mappings = 0
 
 Bundle 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
 if executable('ag')
@@ -61,7 +61,8 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
     " ag is fast enough that CtrlP doesn't need to cache
     let g:ctrlp_use_caching = 0
@@ -131,13 +132,19 @@ autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 :nnoremap <leader>m :buffers<CR>:buffer<Space>
 :nnoremap <leader>p :b#<CR>
 
+" folds
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 "" Python-specific things
-au BufEnter,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=130 smarttab expandtab
+au BufEnter,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=130 smarttab expandtab foldmethod=syntax
 au FileType python setlocal formatprg=autopep8\ -
 
 "" js-specific things
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 foldmethod=syntax
+au BufEnter,BufRead *.json setlocal tabstop=2 softtabstop=2 shiftwidth=2 smarttab expandtab foldmethod=indent
 
 "" auto-remove trailing whitespace
 autocmd BufWritePre *.py :%s/\s\+$//e
