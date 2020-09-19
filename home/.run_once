@@ -1,7 +1,0 @@
-echo '=== Installing vundle'
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-echo
-
-echo '=== Installing bundles'
-vim +BundleInstall +qall
-echo
