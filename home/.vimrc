@@ -150,7 +150,7 @@ au BufEnter,BufRead *.json setlocal tabstop=2 softtabstop=2 shiftwidth=2 smartta
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufEnter,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2 textwidth=130 smarttab expandtab foldmethod=syntax
 au BufEnter,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2 smarttab expandtab foldmethod=syntax
-
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 "" auto-remove trailing whitespace
 autocmd BufWritePre *.py :%s/\s\+$//e

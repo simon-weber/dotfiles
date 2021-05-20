@@ -141,20 +141,27 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 
+export FLYCTL_INSTALL="/home/simon/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
 . /home/simon/.nix-profile/etc/profile.d/nix.sh
 
 # activate a dev env
 ego () {
   source venv-*/bin/activate &> /dev/null
 
-  oldenv="$(printenv | sort | cut -d'=' -f1)"
+  oldenv="$(env -0 | cut -z -f1 -d= | tr '\0' '\n' | sort)"
 
   if [[ -f .env ]]; then
-    eval $(grep -v '^#' .env | sed 's/^/export /')
+    eval "$(grep -v '^#' .env | grep "\S" | sed 's/^/export /')"
   fi
 
-  eval $(envwarden -s "$(basename $(git rev-parse --show-toplevel))-dev")
+  if git rev-parse --git-dir > /dev/null 2>&1; then
+    eval "$(envwarden -s "$(basename $(git rev-parse --show-toplevel))-dev")"
+  else
+    echo "not in git repo; skipping envwarden"
+  fi
 
-  newenv="$(printenv | sort | cut -d'=' -f1)"
+  newenv="$(env -0 | cut -z -f1 -d= | tr '\0' '\n' | sort)"
   comm -13 <(echo "$oldenv") <(echo "$newenv")
 }
