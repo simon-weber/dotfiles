@@ -117,8 +117,10 @@ if ! shopt -oq posix; then
 fi
 
 # all custom things below here
-
 export EDITOR=vim
+
+# write history immediately
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 # https://github.com/microsoft/WSL2-Linux-Kernel/issues/30#issuecomment-577667701
 service docker status > /dev/null || sudo service docker start

@@ -128,6 +128,24 @@ autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 :nnoremap <leader>m :buffers<CR>:buffer<Space>
 :nnoremap <leader>p :b#<CR>
 
+" zoom current buffer in a tab by itself
+" https://stackoverflow.com/a/39562425
+nnoremap <leader>z :call TabToggle()<CR>
+function! TabToggle()
+  if tabpagewinnr(tabpagenr(), '$') > 1
+    " Zoom in when this tab has more than one window
+    tab split
+  elseif tabpagenr('$') > 1
+    " Zoom out when this tab is not the last tab
+    if tabpagenr() < tabpagenr('$')
+      tabclose
+      tabprevious
+    else
+      tabclose
+    endif
+  endif
+endfunction
+
 " folds
 set foldmethod=indent   
 set foldnestmax=10
