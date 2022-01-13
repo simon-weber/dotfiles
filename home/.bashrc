@@ -123,30 +123,30 @@ export EDITOR=vim
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 # https://github.com/microsoft/WSL2-Linux-Kernel/issues/30#issuecomment-577667701
-service docker status > /dev/null || sudo service docker start
+# service docker status > /dev/null || sudo service docker start
 
 keychain -q --nogui ~/.ssh/*_rsa
 source $HOME/.keychain/$HOSTNAME-sh
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
 
-PATH="${PATH}:$HOME/bin:node_modules/.bin"
-PATH="${PATH}:/snap/bin"
+# PATH="${PATH}:$HOME/bin:node_modules/.bin"
+# PATH="${PATH}:/snap/bin"
 
-export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+# export GOPATH=$HOME/go
+# export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
-export GEM_HOME=$HOME/gems
-export PATH=$HOME/gems/bin:$PATH
+# export GEM_HOME=$HOME/gems
+# export PATH=$HOME/gems/bin:$PATH
 
-export FLYCTL_INSTALL="/home/simon/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
+# export FLYCTL_INSTALL="/home/simon/.fly"
+# export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
-. /home/simon/.nix-profile/etc/profile.d/nix.sh
+# . /home/simon/.nix-profile/etc/profile.d/nix.sh
 
 # activate a dev env
 ego () {
